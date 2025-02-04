@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>数秘術鑑定</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f5f5f2;
+            font-family: 'Noto Serif JP', serif;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 30px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ccc;
+        }
+        .card {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            font-weight: bold;
+            background-color: #6d6875;
+            color: white;
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+        }
+        .btn-primary {
+            width: 100%;
+            background-color: #b08968;
+            border-color: #b08968;
+        }
+        .btn-primary:hover {
+            background-color: #8f5e3c;
+            border-color: #8f5e3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4" style="color:#6d6875;">🌿 五感周波操術式　数秘術鑑定 🌿</h2>
+        <form method="POST" class="mb-4">
+            <div class="mb-3">
+                <label for="birthdate" class="form-label">生年月日を入力 (YYYYMMDD):</label>
+                <input type="text" class="form-control" id="birthdate" name="birthdate" required>
+            </div>
+            <button type="submit" class="btn btn-primary">鑑定する</button>
+        </form>
+
+        {% if result %}
+            <div class="card">
+                <div class="card-header">鑑定結果</div>
+                <div class="card-body">
+                    <h5>【ライフパスナンバー】</h5>
+                    <p>🔹 {{ result.life_path.number }} - {{ result.life_path.meaning }}</p>
+                    <hr>
+                    <h5>【過去数】</h5>
+                    <p>🔹 {{ result.past_number.number }} - {{ result.past_number.meaning }}</p>
+                    <hr>
+                    <h5>【未来数】</h5>
+                    <p>🔹 {{ result.future_number.number }} - {{ result.future_number.meaning }}</p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
