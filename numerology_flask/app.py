@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-import numerology_logic  # 数秘術ロジックをインポート
+from .numerology_logic import *  # または必要な関数・クラスを明記
 
 app = Flask(__name__)
 
