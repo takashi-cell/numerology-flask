@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import json
-from numerology_logic import calculate_numerology  # 計算ロジックをインポート
+from numerology_flask.numerology_logic import calculate_numerology  # 修正後
 
 
 app = Flask(__name__)
