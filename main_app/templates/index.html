@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>診断選択ページ</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f3e5f5;
+            font-family: 'Noto Serif JP', serif;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .card {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .card-title {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #7b1fa2;
+        }
+        .btn-primary {
+            width: 100%;
+            background-color: #9c27b0;
+            border-color: #9c27b0;
+        }
+        .btn-primary:hover {
+            background-color: #6a1b9a;
+            border-color: #6a1b9a;
+        }
+    </style>
+    <style>
+        /* スマホでも崩れないタイトルデザイン */
+        .title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.8rem; /* 基本サイズ */
+            line-height: 1.2; /* 行間調整 */
+            flex-wrap: wrap; /* 必要なら折り返し */
+        }
+    
+        /* アイコン（🌿）のサイズ調整 */
+        .leaf-icon {
+            font-size: 1.5rem;
+            margin: 0 5px; /* アイコンの間隔を調整 */
+        }
+    
+        /* スマホ対応: 画面が狭いときはフォントサイズを縮小 */
+        @media screen and (max-width: 600px) {
+            .title {
+                font-size: 1.4rem; /* スマホでは少し小さく */
+            }
+            .leaf-icon {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 🌿 アイコンとテキストをバランスよく配置 -->
+        <h1 class="text-center mb-4 title">
+            <span class="leaf-icon">🌿</span>
+            <span class="title-text">五感周波操術式 問診アプリ</span>
+            <span class="leaf-icon">🌿</span>
+        </h1>
+    
+        <div class="card">
+            <h3 class="card-title">🔢 数秘術診断</h3>
+            <p>あなたの生年月日から運命や人生の方向性を鑑定します。</p>
+            <a href="http://127.0.0.1:5001/" class="btn btn-primary">診断を開始する</a>
+        </div>
+    
+        <div class="card">
+            <h3 class="card-title">🧘 貪・瞋・痴 診断</h3>
+            <p>仏教の教えに基づき、あなたの傾向を分析します。</p>
+            <a href="http://127.0.0.1:5002/" class="btn btn-primary">診断を開始する</a>
+        </div>
+    </div>
+    
+</body>
+</html>

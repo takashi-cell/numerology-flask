@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>診断結果</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-color: #f5f5f2;
+            font-family: 'Noto Serif JP', serif;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 30px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        .card {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            font-weight: bold;
+            background-color: #6d6875;
+            color: white;
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+        }
+        .btn-primary {
+            width: 100%;
+            background-color: #b08968;
+            border-color: #b08968;
+        }
+        .btn-primary:hover {
+            background-color: #8f5e3c;
+            border-color: #8f5e3c;
+        }
+        .chart-container {
+            width: 100%;
+            height: 300px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4" style="color:#6d6875;">🌿 診断結果 🌿</h2>
+
+        {% if result %}
+            <div class="card">
+                <div class="card-header">あなたの傾向</div>
+                <div class="card-body">
+                    <h3 class="result-text">
+                        <ruby>{{ result["dominant_trait"] }}
+                            <rt>{% if result["dominant_trait"] == "貪" %}とん{% elif result["dominant_trait"] == "瞋" %}しん{% elif result["dominant_trait"] == "痴" %}ち{% endif %}</rt>
+                        </ruby>
+                    </h3>
+
+                    <!-- 結果の説明を表示 -->
+                    <p class="description">{{ result["description"] }}</p>
+
+                    {% if result["dominant_trait"] == "貪" %}
+                        <p class="description">例：欲しがり・物を溜め込む・計画的に買えない</p>
+                    {% elif result["dominant_trait"] == "瞋" %}
+                        <p class="description">例：怒りっぽい・批判的・感情を抑えられない</p>
+                    {% elif result["dominant_trait"] == "痴" %}
+                        <p class="description">例：流されやすい・優柔不断・考えなしに行動する</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- グラフの描画エリア -->
+            <div class="chart-container">
+                <canvas id="resultChart"></canvas>
+            </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    try {
+                        // **デバッグ用: scores_json の内容を HTML に埋め込む**
+                        console.log("scores_json (raw):", `{{ scores_json | safe }}`);
+
+                        // **JSON をパースしてスコアデータを取得**
+                        var scores = JSON.parse(`{{ scores_json | safe }}`);
+                        console.log("スコアデータ:", scores);
+
+                        var ctx = document.getElementById('resultChart').getContext('2d');
+                        new Chart(ctx, {
+                            type: 'pie',
+                            data: {
+                                labels: ['貪', '瞋', '痴'],
+                                datasets: [{
+                                    data: [scores["貪"], scores["瞋"], scores["痴"]],
+                                    backgroundColor: ['#8e44ad', '#e74c3c', '#f1c40f']
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false
+                            }
+                        });
+                    } catch (error) {
+                        console.error("JSON パースエラー:", error);
+                    }
+                });
+            </script>
+
+        {% else %}
+            <p>診断結果が見つかりませんでした。もう一度診断してください。</p>
+        {% endif %}
+
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-primary">もう一度診断する</a>
+        </div>
+        
+        <!-- フロントページへ戻るボタン -->
+        <div class="text-center mt-2">
+            <a href="http://127.0.0.1:5000/" class="btn btn-secondary">フロントページへ戻る</a>
+        </div>
+    </div>
+<!-- ページ最下部の著作権表示 -->
+<footer class="text-center mt-4">
+    <p style="font-size: 0.8rem; color: #777;">© 2025 Stream Treading Corp. 無断転載禁止</p>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
