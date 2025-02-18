@@ -18,5 +18,6 @@ def ton_shin_chi():
     return redirect("http://127.0.0.1:5002/")  # 貪・瞋・痴診断のトップページへリダイレクト
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)  # メインアプリはポート5000で起動
+    app.run(debug=True, host="0.0.0.0", port=5000)  # フロントページ用
+
 
