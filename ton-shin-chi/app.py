@@ -3,6 +3,13 @@ import json
 
 app = Flask(__name__)
 
+@app.route("/")  # 🔥 ルートを明示的に定義
+def index():
+    return render_template("index.html")  # 貪・瞋・痴診断のトップページ
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5002)
+
 questions = [
     {"id": "q1", "text": "欲しいものがあると、できるだけ早く手に入れたくなる", "category": "貪"},
     {"id": "q2", "text": "物事が計画通りに進まないと、強いストレスを感じる", "category": "瞋"},
