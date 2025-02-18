@@ -1,6 +1,11 @@
 from flask import Flask, render_template, request
 import json
-from numerology_flask.numerology_logic import calculate_numerology
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+from numerology_logic import calculate_numerology
+
 from flask import Flask, render_template
 
 app = Flask(__name__)
