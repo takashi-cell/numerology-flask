@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import json
-from numerology_flask.numerology_logic import calculate_numerology  # 修正後
-
+from numerology_logic import calculate_numerology  # ✅ numerology_flask を削除
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
