@@ -1,14 +1,15 @@
+import os
 from flask import Flask, render_template, request
 import json
 import sys
-import os
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from numerology_logic import calculate_numerology
 
-from flask import Flask, render_template
-
 app = Flask(__name__)
+
+# Render の環境変数 PORT からポートを取得（デフォルト 10000）
+PORT = int(os.getenv("PORT", 10000))
 
 # 数秘術の意味を格納する辞書
 num_meanings = {
@@ -54,5 +55,6 @@ def index():
         return render_template("result.html", result=result, num_meanings=num_meanings)
 
     return render_template("index.html")
+
 if __name__ == "__main__":
-    app.run(debug=True, port=5001)  # 5001は数秘術、5002は貪・瞋・痴
+    app.run(host="0.0.0.0", port=PORT, debug=True)  # Render 環境変数 PORT を使用
