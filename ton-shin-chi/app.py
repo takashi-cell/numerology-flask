@@ -1,7 +1,11 @@
+import os
 from flask import Flask, render_template, request, jsonify
 import json
 
 app = Flask(__name__)
+
+# Render の環境変数 PORT からポートを取得（デフォルト 10000）
+PORT = int(os.getenv("PORT", 10000))
 
 # 診断の質問リスト
 questions = [
@@ -56,4 +60,5 @@ def index():
     return render_template("index.html", questions=questions)
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=5002)  # 貪・瞋・痴 診断用
+    app.run(host="0.0.0.0", port=PORT, debug=True)  # 環境変数 PORT を使って Render に対応
+
