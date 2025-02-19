@@ -15,12 +15,13 @@ def home():
 # Numerology Flask へのリダイレクト
 @app.route("/numerology")
 def numerology():
-    return redirect(f"{RENDER_URL}/numerology")  # Render のURLへリダイレクト
+    return redirect("https://numerology-flask.onrender.com/")  # 🔥 ここを修正
 
 # Ton-Shin-Chi へのリダイレクト
 @app.route("/ton-shin-chi")
 def ton_shin_chi():
-    return redirect(f"{RENDER_URL}/ton-shin-chi")  # Render のURLへリダイレクト
+    return redirect("https://ton-shin-chi.onrender.com/")  # 🔥 ここも修正
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(PORT), debug=True)  # Render で動作するよう修正
