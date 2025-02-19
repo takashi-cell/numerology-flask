@@ -3,25 +3,20 @@ from flask import Flask, render_template, redirect
 
 app = Flask(__name__)
 
-# Render のポート番号を取得（デフォルト5000）
-PORT = os.environ.get("PORT", 5000)
-RENDER_URL = "https://numerology-flask.onrender.com"  # 🚀 Render のURLを設定
+# Render の環境変数 PORT からポートを取得（デフォルト 10000）
+PORT = int(os.getenv("PORT", 10000))
 
-# フロントページ（診断選択ページ）
 @app.route("/")
 def home():
-    return render_template("index.html")  # 診断選択ページを表示
+    return render_template("index.html")
 
-# Numerology Flask へのリダイレクト
 @app.route("/numerology")
 def numerology():
-    return redirect("https://numerology-flask.onrender.com/")  # 🔥 ここを修正
+    return redirect("https://numerology-flask.onrender.com/")
 
-# Ton-Shin-Chi へのリダイレクト
 @app.route("/ton-shin-chi")
 def ton_shin_chi():
-    return redirect("https://ton-shin-chi.onrender.com/")  # 🔥 ここも修正
-
+    return redirect("https://ton-shin-chi.onrender.com/")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(PORT), debug=True)  # Render で動作するよう修正
+    app.run(host="0.0.0.0", port=PORT, debug=True)
