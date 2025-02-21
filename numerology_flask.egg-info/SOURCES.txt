@@ -1,6 +1,0 @@
-setup.py
-numerology_flask.egg-info/PKG-INFO
-numerology_flask.egg-info/SOURCES.txt
-numerology_flask.egg-info/dependency_links.txt
-numerology_flask.egg-info/requires.txt
-numerology_flask.egg-info/top_level.txt
