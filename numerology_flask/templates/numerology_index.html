@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>数秘術診断</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <!-- Flatpickr のスタイルとスクリプト -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+    <style>
+        body {
+            background-color: #f5f5f2;
+            font-family: 'Noto Serif JP', serif;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 30px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        .card {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: none;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .card-header {
+            font-weight: bold;
+            background-color: #6d6875;
+            color: white;
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+        }
+        .btn-primary {
+            width: 100%;
+            background-color: #b08968;
+            border-color: #b08968;
+        }
+        .btn-primary:hover {
+            background-color: #8f5e3c;
+            border-color: #8f5e3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">🌿 五感周波操術式 数秘術診断 🌿</h2>
+        <form method="post" class="mt-4">
+            <div class="mb-3">
+                <label for="birthdate">生年月日を選択:</label>
+                <input type="text" id="birthdate" name="birthdate" class="form-control" required>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">診断する</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            flatpickr("#birthdate", {
+                dateFormat: "Y-m-d",  // 年-月-日 形式
+                allowInput: false,  // 手入力不可（カレンダーのみ）
+                maxDate: "today",   // 未来の日付は選択不可
+                yearRange: [1920, new Date().getFullYear()], // 1920年～現在まで選択可能
+                locale: "ja" // 日本語対応（オプション）
+            });
+        });
+    </script>
+<!-- ページ最下部の著作権表示 -->
+<footer class="text-center mt-4">
+    <p style="font-size: 0.8rem; color: #777;">© 2025 Stream Treading Corp. 無断転載禁止</p>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

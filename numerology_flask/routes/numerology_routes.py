@@ -1,15 +1,9 @@
-import os
-from flask import Flask, render_template, request
+from flask import Blueprint, render_template, request
 import json
-import sys
+from numerology_logic import calculate_numerology  # 🔹 数秘術ロジックをインポート
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-from numerology_logic import calculate_numerology
-
-app = Flask(__name__)
-
-# Render の環境変数 PORT からポートを取得（デフォルト 10000）
-PORT = int(os.getenv("PORT", 10000))
+# 🔹 Blueprint を作成
+numerology_bp = Blueprint("numerology", __name__)
 
 # 数秘術の意味を格納する辞書
 num_meanings = {
@@ -27,8 +21,9 @@ num_meanings = {
     33: "無条件の愛を持ち、他者の幸福を第一に考える。"
 }
 
-@app.route("/", methods=["GET", "POST"])
-def index():
+# 🔹 `@numerology_bp.route` に変更
+@numerology_bp.route("/", methods=["GET", "POST"])
+def numerology_index():
     result = None  # 🔥 事前に None で初期化
     if request.method == "POST":
         birthdate = request.form.get("birthdate")
@@ -55,6 +50,3 @@ def index():
         return render_template("result.html", result=result, num_meanings=num_meanings)
 
     return render_template("index.html")
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=PORT, debug=True)  # Render 環境変数 PORT を使用

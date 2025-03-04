@@ -1,11 +1,8 @@
-import os
-from flask import Flask, render_template, request, jsonify
+from flask import Blueprint, render_template, request
 import json
 
-app = Flask(__name__)
-
-# Render の環境変数 PORT からポートを取得（デフォルト 10000）
-PORT = int(os.getenv("PORT", 10000))
+# 🔹 Blueprint を作成
+tonshinchi_bp = Blueprint("tonshinchi", __name__)
 
 # 診断の質問リスト
 questions = [
@@ -21,8 +18,9 @@ questions = [
     {"id": "q10", "text": "もし全てを捨てて新しい生活を始めるなら、不安で仕方ない", "category": "貪"},
 ]
 
-@app.route("/", methods=["GET", "POST"])
-def index():
+# 🔹 `@tonshinchi_bp.route` に変更
+@tonshinchi_bp.route("/", methods=["GET", "POST"])
+def tonshinchi_index():
     if request.method == "POST":
         answers = request.form
         score = {"貪": 0, "瞋": 0, "痴": 0}
@@ -58,7 +56,3 @@ def index():
         return render_template("result.html", result=result, scores_json=scores_json)
 
     return render_template("index.html", questions=questions)
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=PORT, debug=True)  # 環境変数 PORT を使って Render に対応
-
