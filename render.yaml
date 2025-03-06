@@ -2,6 +2,7 @@ services:
   - type: web
     name: numerology-flask
     env: python
+    rootDir: FLASK_APP  # ← 🔥 追加！
     buildCommand: "pip install -r requirements.txt"
     startCommand: "gunicorn app:app"
     plan: free
