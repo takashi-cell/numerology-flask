@@ -2,5 +2,5 @@ from numerology_flask import create_app
 
 app = create_app()
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000, debug=True)
+if_name_=="_main_":
+  app.run(host="0.0.0.0",port=10000,debug=True) 
