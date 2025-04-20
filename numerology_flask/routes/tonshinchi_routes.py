@@ -55,4 +55,4 @@ def tonshinchi_index():
 
         return render_template("result.html", result=result, scores_json=scores_json)
 
-    return render_template("index.html", questions=questions)
+    return render_template("tonshinchi_index.html", questions=questions)

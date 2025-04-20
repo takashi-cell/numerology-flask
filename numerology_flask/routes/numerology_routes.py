@@ -49,4 +49,4 @@ def numerology_index():
 
         return render_template("result.html", result=result, num_meanings=num_meanings)
 
-    return render_template("index.html")
+    return render_template("numerology_index.html")
