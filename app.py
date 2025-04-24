@@ -1,3 +1,4 @@
+# recreated to fix null byte issue
 from numerology_flask import create_app
 
 app = create_app()
