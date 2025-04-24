@@ -1,10 +1,6 @@
-from flask import Flask
+from numerology_flask import create_app
 
-app = Flask(__name__)
-
-@app.route("/")
-def home():
-    return "Hello, this is a test app running on Render!"
+app = create_app()
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000, debug=True)
